@@ -1,0 +1,69 @@
+<template>
+  <view class="cates_box">
+    <!-- 左侧滚动视图 -->
+    <scroll-view class="left" scroll-y style="height:{{wh}}px;">
+      <van-badge-group active="{{active}}" @change="onChange">
+        <van-badge title="{{item.cat_name}}" wx:for="{{catesList}}" wx:key="index"/>
+      </van-badge-group>
+    </scroll-view>
+    <!-- 右侧滚动视图 -->
+    <scroll-view class="right" scroll-y style="height:{{wh}}px">
+      <!-- 循环创建二级分类 -->
+      <block wx:for="{{secondCate}}" wx:key="index">
+        <van-row>
+          <van-col span="24" class="cates_col">
+            <text class="cates_title" space="ensp">/  {{item.cat_name}}  /</text>
+          </van-col>
+        </van-row>
+        <!-- 三级分类 -->
+				<van-row>
+					<block wx:for="{{item.children}}" wx:key="index">
+						<van-col span="8" class="cell" @tap="goGoosList({{item.cat_id}})">
+							<image src="{{item.cat_icon}}" class="thumImg"/>
+							<view class="thumTitle">{{item.cat_name}}</view>
+						</van-col>
+					</block>
+				</van-row>
+			</block>
+    </scroll-view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import mix from '@/mixins/tabs/cates.js'
+
+export default class Cates extends wepy.page {
+  mixins = [mix]
+} 
+</script>
+
+<style lang="less">
+.cates_box {
+  display: flex;
+}
+.left {
+  width: 85px;
+}
+.right{
+	.cates_title {
+	font-size: 26rpx;
+	font-weight: bold;
+	display: inline-block;
+	margin: 30rpx 0;
+	}
+}
+.cates_col {
+  text-align: center;
+}
+.cell{
+	text-align: center;
+	.thumImg{
+		width: 120rpx;
+		height: 120rpx;
+	}
+	.thumTitle{
+		font-size: 24rpx;
+	}
+}
+</style>

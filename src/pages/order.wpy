@@ -1,0 +1,20 @@
+<template>
+    <view>
+        订单确认
+    </view>
+</template>
+
+
+<script>
+import wepy from 'wepy'
+import mix from '@/mixins/order.js'
+
+export default class extends wepy.page {
+
+    mixins = [mix]
+}
+</script>
+
+<style lang="less">
+
+</style>

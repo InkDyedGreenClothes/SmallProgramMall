@@ -1,0 +1,19 @@
+<template>
+    <view>me</view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+
+    export default class Me extends wepy.page {
+        config = {}
+    
+        data = {}
+
+        methods = {}
+    }
+</script>
+
+<style lang="less">
+
+</style>
